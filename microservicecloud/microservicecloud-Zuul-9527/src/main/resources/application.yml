@@ -1,0 +1,32 @@
+server:
+  port: 9527
+  
+spring:  application:    name: microservicecloud-zuul
+  
+eureka:
+  client:     #客户端注册进eureka服务列表内
+    service-url:
+      defaultZone: http://eureka7001:7001/eureka/,http://eureka7002:7002/eureka/,http://eureka7003:7003/eureka/
+  instance:
+    instance-id: zuul.com   #自定义服务名称信息
+    prefer-ip-address: true     #访问路径可以显示IP地址
+
+zuul:
+  prefix: /wuhan                                #添加统一的公共前缀
+  ignored-services: microservicecloud-dept      #忽略该服务名称
+  #ignored-services: "*"                        忽略掉所有微服务名  routes:                                       #映射名    dept.serviceId: microservicecloud-dept
+    dept.path: /hanyang/**
+    
+info:
+  app.name: chen-microservicecloud
+  company.name: www.chen.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$    
+     
+  
+  
+  
+  
+  
+  
+  
